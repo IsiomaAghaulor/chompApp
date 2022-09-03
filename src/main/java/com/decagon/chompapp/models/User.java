@@ -51,7 +51,8 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.REMOVE,
+            CascadeType.REFRESH, CascadeType.DETACH })
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "userId"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "roleId"))
     private Set<Role> roles;

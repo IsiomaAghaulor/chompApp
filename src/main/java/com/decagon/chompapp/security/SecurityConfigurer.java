@@ -64,6 +64,8 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**").permitAll()
                 .antMatchers("/api/v1/auth/users/getAllProducts/**").permitAll()
                 .antMatchers("/api/v1/auth/users/display-user-details").hasAuthority("ROLE_PREMIUM")
+                .antMatchers("/api/v1/auth/users/edit").hasAuthority("ROLE_PREMIUM")
+                .antMatchers("/api/v1/auth/users/edit").hasAuthority("ROLE_ADMIN")
                 .antMatchers("/api/v1/auth/users/getAllProducts").permitAll()
                 .antMatchers("/favorite/**").permitAll()
                 .antMatchers("/v2/api-docs",

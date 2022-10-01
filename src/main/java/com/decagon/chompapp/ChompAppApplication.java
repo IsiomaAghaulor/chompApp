@@ -54,30 +54,7 @@ public class ChompAppApplication implements CommandLineRunner {
             roleRepository.save(userRole);
         }
 
-        Optional<User> newUser = userRepository.findByEmail("admin@gmail.com");
-
-        if(newUser.isEmpty()){
-            Set<Role> userAdminRoles = new HashSet<>();
-            Role userAdminRole = roleRepository.findByName("ROLE_ADMIN").orElseThrow(()-> new ResourceNotFoundException("ROLE_ADMIN not found"));
-            userAdminRoles.add(userAdminRole);
-            User user = new User();
-            user.setFirstName("admin");
-            user.setLastName("admin");
-            user.setUsername("admin");
-            user.setEmail("admin@gmail.com");
-            user.setPassword("1234");
-            user.setGender(Gender.MALE);
-            user.setIsEnabled(true);
-            user.setRoles(Collections.singleton(userAdminRole));
-            userRepository.save(user);
-        }
-
     }
-
-//    @Override
-//    public ResponseEntity<String> adminUser(String... args) throws Exception{
-//
-//    }
 }
 
 
